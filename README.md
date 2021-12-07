@@ -27,41 +27,42 @@ If you want to calculate Statistic Resolution by faster method, block the image,
 3. result: Record fitting result, not used for common user
 
 ### For advanced using or re-program -- How to use the code
-* __Function Structure__
-The code is build by following structure (list not include original matlab function):
-AMainStartHere: Main for simple using
-	DoubelFitting: (Main Algorithm)
-		DenoiseFunc: Denoise the image
-		Normalized: Normalize image Intensity
-		Grad202012: Get the gradient
-		skeleton: Extract skeleton of structure
-		FWHM202012: First fitting of every location
-		FromList2Image: Rebuild the image
-		StaRegin1: Calculate the confidence interval
-		RawResultMerge: Showing the Local Resolution for visualization
+* __Function Structure__  <br/>
+The code is build by following structure (list not include original matlab function):  
+1. AMainStartHere: Main for simple using <br/>
+&emsp;&emsp;	DoubelFitting: (Main Algorithm) <br/>
+&emsp;&emsp;	DenoiseFunc: Denoise the image  <br/>
+&emsp;&emsp;	Normalized: Normalize image Intensity <br/>
+&emsp;&emsp;	Grad202012: Get the gradient  <br/>
+&emsp;&emsp;	skeleton: Extract skeleton of structure  <br/>
+&emsp;&emsp;	FWHM202012: First fitting of every location  <br/>
+&emsp;&emsp;	FromList2Image: Rebuild the image  <br/>
+&emsp;&emsp;	StaRegin1: Calculate the confidence interval  <br/>
+&emsp;&emsp;	RawResultMerge: Showing the Local Resolution for visualization  
 
-	SubGlobalWithout: Analyze average resolution of sub region (optional)
-		DenoiseFunc: Denoise the image
-		LM_Wo: Least Square method not considering influence of structure width 
-		LS_Wo: Fitting model
-		df_LS_Wo: Gradient based on fitting model
+2. SubGlobalWithout: Analyze average resolution of sub region (optional)  <br/>
+&emsp;&emsp;	DenoiseFunc: Denoise the image  <br/>
+&emsp;&emsp;	LM_Wo: Least Square method not considering influence of structure width  <br/>
+&emsp;&emsp;	LS_Wo: Fitting model  <br/>
+&emsp;&emsp;	df_LS_Wo: Gradient based on fitting model  
 
-	Others:
-		ShowFitProcess: Visualizing calculation on each structer. Noting if you want to show the process, choose a small image with relatively less structure for time costing of screen refreshes.
-			MiPicLine
-			MixShow
-			freezeColors
-		TwoStructFit202012: Calculating FWHM and distance changes when two structers adjacent
-			createFit
+3. Others:  <br/>
+&emsp;	ShowFitProcess: Visualizing calculation on each structer. Noting if you want to show the process, choose a small image with relatively less structure for time costing of screen refreshes.  <br/>
+&emsp;&emsp;	MiPicLine  <br/>
+&emsp;&emsp;	MixShow  <br/>
+&emsp;&emsp;	freezeColors  <br/>
+&emsp;	 TwoStructFit202012: Calculating FWHM and distance changes when two structers adjacent  <br/>
+&emsp;&emsp;	createFit
+&nbsp;
 
-* __Parameter Description__
-	For user's, normally, parameters __ZhixinMinMap__,  __Meanff__, __Stdff__ are enough. But for further research, we provide redundant output parameters. All paramters meaning states here:
-		GdTruthFWHM:	Ground Truth of FWHM when needs verification (not necessary). If you want to record it, then input the value. For convinient and compatible, we transfer it out. At __AMainStartHere.m__, we set it to 0. 
-		frame:			frame of your calculate image when needs verification (not necessary). If you want to record it, then input the value. For convinient and compatible, we transfer it out. At __AMainStartHere.m__, we set it to 0. 
-		MeanMap:		The sample mean. This is directly calulated from sample not from the distribution. 
-		StdMap:			The sample variance. This is directly calulated from sample not from the distribution. 
-		ZhixinMinMap:	R-mini, default is 2 times of Stdff.
-		ZhixinMaxMap:	The maximal resolution under confidence interval.
-		CalNum:			All calculated value numbers after clearing.
-		Meanff:			R-mean. This is distribution mean.
-		Stdff:			The variance of distribution.
+* __Parameter Description__  <br/>
+&emsp;	For user's, normally, parameters __ZhixinMinMap__,  __Meanff__, __Stdff__ are enough. But for further research, we provide redundant output parameters. All paramters meaning states here:  <br/>
+&emsp;&emsp;		GdTruthFWHM:	Ground Truth of FWHM when needs verification (not necessary). If you want to record it, then input the value. For convinient and compatible, we transfer it out. At __AMainStartHere.m__, we set it to 0.   <br/>
+&emsp;&emsp;		frame:			frame of your calculate image when needs verification (not necessary). If you want to record it, then input the value. For convinient and compatible, we transfer it out. At __AMainStartHere.m__, we set it to 0.   <br/>
+&emsp;&emsp;		MeanMap:		The sample mean. This is directly calulated from sample not from the distribution.   <br/>
+&emsp;&emsp;		StdMap:			The sample variance. This is directly calulated from sample not from the distribution.  <br/>
+&emsp;&emsp;		ZhixinMinMap:	R-mini, default is 2 times of Stdff. <br/>
+&emsp;&emsp;		ZhixinMaxMap:	The maximal resolution under confidence interval. <br/>
+&emsp;&emsp;		CalNum:			All calculated value numbers after clearing. <br/>
+&emsp;&emsp;		Meanff:			R-mean. This is distribution mean. <br/>
+&emsp;&emsp;		Stdff:			The variance of distribution. <br/>

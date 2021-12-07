@@ -2,7 +2,7 @@
 
 %%
 %  Input: user parameter!!!!!!!!!!!
-Path='E:\Mine\LAB\Resolution\Resolution research\Fig Principal\T1\T1.tif'; %The Path of the image
+Path='T1.tif'; %The Path of the image
 pixelsize = 5; % nm
 clearT=0.9; %thershold for skeleton thinning
 SkelT =min(floor(1000/pixelsize),35); % Recommand parameter for experiment data, and for simulate data, SkelT can set to 0
